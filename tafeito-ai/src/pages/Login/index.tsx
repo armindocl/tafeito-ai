@@ -64,7 +64,7 @@ const Login = () => {
             } else if (data.responseStatus === 400) {
                 setErrorMessage('Requisição inválida!')
             } else if (data.responseStatus === 200) {
-                navigate('/tasks'); // alert('Requisição válida!')
+                navigate('/tarefas'); // alert('Requisição válida!')
             }
         })
         .catch(error => setErrorMessage('Erro no servidor, tente novamente mais tarde!'));
