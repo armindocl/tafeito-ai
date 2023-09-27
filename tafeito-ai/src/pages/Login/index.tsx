@@ -10,9 +10,11 @@ import { FormControl, InputLabel, FilledInput, InputAdornment, IconButton, Typog
 import { VisibilityOff, Visibility } from '@mui/icons-material';
 import { error } from 'console';
 import { useNavigate } from 'react-router-dom';
-
+import { useAuth } from '../../provider/authProvider';
 
 const Login = () => {
+
+    const { token, setToken } = useAuth();
 
     const [isButtonActive, setIsButtonActive] = useState(true);
     const [username, setUsername] = useState<string|null>(null);
@@ -24,6 +26,12 @@ const Login = () => {
     const handleClickPassword = () => {
         setShowPassword(!showPassword);
     };
+
+    useEffect(() => {
+        if (token) {
+            navigate('/tarefas', {replace: true});
+        }
+    }, [token])
 
     useEffect(() => {
         if (username !== null && username !== '' &&
@@ -64,7 +72,9 @@ const Login = () => {
             } else if (data.responseStatus === 400) {
                 setErrorMessage('Requisição inválida!')
             } else if (data.responseStatus === 200) {
-                navigate('/tarefas'); // alert('Requisição válida!')
+                if (data?.data?.token) {
+                    setToken(data?.data?.token);
+                }
             }
         })
         .catch(error => setErrorMessage('Erro no servidor, tente novamente mais tarde!'));
