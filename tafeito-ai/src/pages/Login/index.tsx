@@ -9,6 +9,7 @@ import {useState, useEffect} from 'react';
 import { FormControl, InputLabel, FilledInput, InputAdornment, IconButton, Typography} from '@mui/material';
 import { VisibilityOff, Visibility } from '@mui/icons-material';
 import { error } from 'console';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
@@ -18,6 +19,7 @@ const Login = () => {
     const [password, setPassword] = useState<string|null>(null);
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState<string|null>(null);
+    const navigate = useNavigate(); // added
     
     const handleClickPassword = () => {
         setShowPassword(!showPassword);
@@ -62,7 +64,7 @@ const Login = () => {
             } else if (data.responseStatus === 400) {
                 setErrorMessage('Requisição inválida!')
             } else if (data.responseStatus === 200) {
-                alert('Requisição válida!')
+                navigate('/tasks'); // alert('Requisição válida!')
             }
         })
         .catch(error => setErrorMessage('Erro no servidor, tente novamente mais tarde!'));
