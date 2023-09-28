@@ -1,3 +1,4 @@
+import * as React from "react";
 import { useNavigate } from 'react-router-dom';
 import NavBar from "../../components/NavBar";
 import { useAuth } from "../../provider/authProvider";
@@ -10,7 +11,7 @@ const Tasks = () => {
     
       const logout = () => {
         setToken(null);
-        navigate('/login', { replace: true});
+        navigate("/login", { replace: true});
       }
     
       return (

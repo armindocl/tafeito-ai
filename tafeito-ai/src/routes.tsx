@@ -3,7 +3,7 @@ import {
     createBrowserRouter,
     RouterProvider,
     Route,
-    Link
+    Link,
 } from "react-router-dom";
 import Login from "./pages/Login";
 import Tasks from "./pages/Tasks";
@@ -17,7 +17,7 @@ const Routes = () => {
           element: <ProtectRoute />,
           children: [
             {
-              path: "/tarefas",
+              path: '/tarefas',
               element: <Tasks />
             }
           ]
