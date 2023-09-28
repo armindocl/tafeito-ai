@@ -21,7 +21,7 @@ const Login = () => {
     const [password, setPassword] = useState<string|null>(null);
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState<string|null>(null);
-    const navigate = useNavigate(); // added
+    const navigate = useNavigate();
     
     const handleClickPassword = () => {
         setShowPassword(!showPassword);
@@ -52,9 +52,9 @@ const Login = () => {
                 login: username,
                 senha: password
             })
-    };
+        };
 
-    setErrorMessage('');
+        setErrorMessage('');
 
     fetch('http://localhost:3000/usuarios/login', requestOptions)
         .then(async (response) => {
@@ -73,7 +73,7 @@ const Login = () => {
                 setErrorMessage('Requisição inválida!')
             } else if (data.responseStatus === 200) {
                 if (data?.data?.token) {
-                    setToken(data?.data?.token);
+                    setToken(data?.data?.token)
                 }
             }
         })
