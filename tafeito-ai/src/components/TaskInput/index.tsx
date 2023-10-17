@@ -29,7 +29,6 @@ const TaskInput = (props: TaskInputProps) => {
 
   const createTask = async () => {
     const payload = {
-      // your post data goes here
       id_categoria: category.id,
       descricao: taskDescription,
     };
@@ -46,6 +45,7 @@ const TaskInput = (props: TaskInputProps) => {
       setSelectedTaskInput(null);
       submitTask();
       enqueueSnackbar("Tarefa criada!", { variant: "success" });
+      setRefetchTaskStatus(refetchTaskStatus + 1);
     } catch (err) {
       setError((err as Error).message);
       enqueueSnackbar("Erro ao criar a tarefa.", { variant: "error" });
@@ -105,7 +105,6 @@ const TaskInput = (props: TaskInputProps) => {
             variant="contained"
             onClick={cancelCreateTask}
           >
-            Adicionar Tarefa
             Cancelar
           </Button>
           <Button component="label" variant="contained" onClick={isEdit ? editTask: createTask}>
