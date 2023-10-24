@@ -17,6 +17,7 @@ import { TaskProps } from './Task';
 import DeleteTaskDialog from "../DeleteTaskDialog";
 import { url_update_task, url_finish_task, url_reopen_task } from "../../utils/api";
 import { useSnackbar } from "notistack";
+import TaskTags from "../TaskTags";
 
 const Task = (props:TaskProps) => {
     const {
@@ -152,6 +153,9 @@ const Task = (props:TaskProps) => {
           <ListItemText id={labelId} primary={task.descricao} secondary = { renderFinishedText() }/>
         </ListItemButton>
       </ListItem>
+
+      <TaskTags task={task}/>
+      
       <DeleteTaskDialog
         task={task}
         openedDialog={openedDialog}
