@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSnackbar } from "notistack";
 
 import Button from "@mui/material/Button";
-import axios from "axios";
+import { api } from '../../provider/customAxios';
 
 import { url_tasks, url_update_task } from "../../utils/api";
 import { TaskInputProps } from "./TaskInput";
@@ -34,11 +34,7 @@ const TaskInput = (props: TaskInputProps) => {
     };
 
     try {
-      await axios.post(url_tasks, payload, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await api.post(url_tasks, payload);
       
       setError(null);
       setTaskDescription("");
@@ -61,11 +57,7 @@ const TaskInput = (props: TaskInputProps) => {
     const taskId = task?.id ?? -1;
     const custom_task_url = url_update_task.replace(':id', taskId.toString());
     try {
-      await axios.patch(custom_task_url, payload, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await api.patch(url_tasks, payload);
       setError(null);
       setTaskDescription("");
       setSelectedTaskInput(null);

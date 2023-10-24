@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { useState } from "react";
 import { format, formatDistance, formatRelative, subDays, parseISO } from 'date-fns';
 
-import axios from "axios";
+import { api } from '../../provider/customAxios';
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -37,11 +37,7 @@ const Task = (props:TaskProps) => {
       const taskId = task?.id ?? -1;
       const custom_task_url = url_finish_task.replace(":id", taskId.toString());
       try {
-        await axios.post(custom_task_url, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        await api.post(custom_task_url);
         setError(null);
         enqueueSnackbar("Tarefa concluída!", { variant: "success" });
         setRefetchTaskStatus(refetchTaskStatus + 1);
@@ -55,11 +51,7 @@ const Task = (props:TaskProps) => {
       const taskId = task?.id ?? -1;
       const custom_task_url = url_reopen_task.replace(":id", taskId.toString());
       try {
-        await axios.post(custom_task_url, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        await api.post(custom_task_url);
         setError(null);
         enqueueSnackbar("Tarefa reaberta!", { variant: "success" });
         setRefetchTaskStatus(refetchTaskStatus + 1);
@@ -88,11 +80,7 @@ const Task = (props:TaskProps) => {
       const taskId = task?.id ?? -1;
       const custom_task_url = url_update_task.replace(":id", taskId.toString());
       try {
-        await axios.delete(custom_task_url, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        await api.delete(custom_task_url);
         setError(null);
         enqueueSnackbar("Tarefa deletada!", { variant: "success" });
         setRefetchTaskStatus(refetchTaskStatus + 1);
