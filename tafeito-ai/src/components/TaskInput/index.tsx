@@ -51,13 +51,12 @@ const TaskInput = (props: TaskInputProps) => {
   const editTask = async () => {
     const payload = {
       id: task?.id,
-      // your post data goes here
       descricao: taskDescription,
     };
     const taskId = task?.id ?? -1;
     const custom_task_url = url_update_task.replace(':id', taskId.toString());
     try {
-      await api.patch(url_tasks, payload);
+      await api.patch(custom_task_url, payload);
       setError(null);
       setTaskDescription("");
       setSelectedTaskInput(null);
@@ -66,7 +65,7 @@ const TaskInput = (props: TaskInputProps) => {
       setRefetchTaskStatus(refetchTaskStatus + 1);
     } catch (err) {
       setError((err as Error).message);
-      enqueueSnackbar("Erro ao criar a tarefa.", { variant: "error" });
+      enqueueSnackbar("Erro ao tentar editar a tarefa.", { variant: "error" });
     }
   };
 
@@ -99,8 +98,8 @@ const TaskInput = (props: TaskInputProps) => {
           >
             Cancelar
           </Button>
-          <Button component="label" variant="contained" onClick={isEdit ? editTask: createTask}>
-            {isEdit ? 'Editar' : 'Criar'}
+          <Button component="label" variant="contained" onClick={isEdit ? editTask : createTask}>
+            {isEdit ? 'Salvar' : 'Criar'}
           </Button>
 
         </CardActions>
