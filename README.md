@@ -9,6 +9,8 @@ Essa aplicação é um moderno gerenciador de tarefas que possui a funcionalidad
 ### Criar Projeto Inteligente
 ![image](https://github.com/armindocl/tafeito-ai/assets/55541747/0e79d7e6-5c45-43ba-9881-6c7981f4f259)
 
+### Tarefas criadas com assistência da inteligência artificial
+![image](https://github.com/armindocl/tafeito-ai/assets/55541747/034ffef2-e534-467e-b860-277054223725)
 
 ## Características da aplicação
 * Framework React
