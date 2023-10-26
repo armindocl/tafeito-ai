@@ -103,7 +103,8 @@ const ProjectTasks = (props: ProjectTasksProps) => {
         <DialogContent>
           <DialogContentText>
             Descreva o seu objetivo e então o TafeitoGPT irá criar as tarefas
-            necessárias para você alcançar ele.
+            necessárias para você alcançá-lo.
+            <br />
           </DialogContentText>
           <FormControl>
             <FormLabel id="demo-row-radio-buttons-group-label">
