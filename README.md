@@ -3,6 +3,9 @@ O objetivo desse projeto é a implementação do frontend da aplicação que des
 
 Essa aplicação é um moderno gerenciador de tarefas que possui a funcionalidade "Projeto Inteligente". Através da integração com uma ferramenta de Inteligência Artificial, cria automaticamente as tarefas no âmbito do projeto maior, ou seja, traçando o escopo do mesmo.
 
+![image](https://github.com/armindocl/tafeito-ai/assets/55541747/95d6f8a3-8b30-46e0-b929-ef0d66179dc2)
+
+
 ## Características da aplicação
 * Framework React
 * Linguagem TypeScript
